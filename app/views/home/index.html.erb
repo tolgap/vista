@@ -1,0 +1,12 @@
+<div class="intro page-header">
+  <h1>Overview</h1>
+  <p>Welcome. This is the overview application to view all your Wordpress install information, if you have any data already in the database of course. To get a better detail and to see which plugins need updates, click on one of your servers:</p>
+</div>
+<div class="server-list">
+  <h2>Servers:</h2>
+  <ol>
+    <% @servers.each do |server| %>
+      <li><h3><%= link_to server.name, server_path(server) %></h3></li>
+    <% end %>
+  </ol>
+</div>

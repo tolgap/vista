@@ -1,0 +1,34 @@
+// Place all the styles related to the Plugins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.plugins-list {
+	
+	.plugin {
+		height: 30px;
+		background-color: #E7E2D9;
+		font-size: 16px;
+		padding: 15px 10px 10px 10px;
+		margin: 10px 0;
+		box-shadow: 0 4px 2px -2px gray;
+
+		a {
+			color: #000;
+			text-decoration: underline;
+		}
+
+		&.inactive {
+			background-color: #000;
+			opacity: 0.4;
+
+			a {
+				color: #fff;
+			}
+
+			.badge, .label {
+				color: #000;
+			}
+		}
+	}
+
+}

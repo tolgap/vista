@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<div class="intro page-header">
+  <h1><%= @server.name %><small> server's information</small></h1>
+  <p>Here are all Wordpress installations on the <em><%= @server.name %></em> server with all their core and plugin information.</p>
+  <p>Click on the website name to expand it's plugin information</p>
+</div>
+
+<div class="websites-list accordion" id="accordion-server">
+  <% @server.websites.each do |website| %>
+    <% css_class = cycle('pull-left left', 'pull-left right') %>
+    <%= render :partial => "websites/single", :locals => { :website => website, :css_class => css_class } %>
+  <% end %>
+</div>

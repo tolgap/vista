@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name=string: MyString
+  status=string: MyString
+  update=string: MyString
+  version=string: MyString
+
+two:
+  name=string: MyString
+  status=string: MyString
+  update=string: MyString
+  version=string: MyString
