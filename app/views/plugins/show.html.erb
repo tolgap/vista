@@ -1,25 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name=string:</b>
-  <%= @plugin.name %>
-</p>
+<div class="intro page-header">
+  <h1><%= @plugin.name.titleize %> <small>detail in <%= @plugin.website.name %> website</small></h1>
+</div>
 
-<p>
-  <b>Status=string:</b>
-  <%= @plugin.status %>
-</p>
-
-<p>
-  <b>Update=string:</b>
-  <%= @plugin.update %>
-</p>
-
-<p>
-  <b>Version=string:</b>
-  <%= @plugin.version %>
-</p>
-
-
-<%= link_to 'Edit', edit_plugin_path(@plugin) %> |
-<%= link_to 'Back', plugins_path %>
+  <div class="plugin single">
+    <div class="accordion-heading">
+      <span class="accordion-toggle">
+        <h3><%= @plugin.name.titleize %></h3>
+      </span>
+      <div class="plugin-info">
+        <p class="version">Plugin version: <span class="badge badge-info"><%= @plugin.version %></span></p>
+        <p class="status">Status: <strong><%= @plugin.status %></strong></p>
+        <p class="update">Update: <%= has_update_span(@plugin).html_safe %></p>
+        <p class="updated">Last updated <strong><%= time_ago_in_words(@plugin.updated_at) %></strong> ago</p>
+      </div>
+    </div>
+    <div id="accordion-<%= @plugin.id %>" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <% matches = Website.has_plugin(@plugin) %>
+        <% debug(matches) %>
+        <p>This plugin is also used in <%= matches.count %> other websites:</p>
+        <ul class="websites-list unstyled">
+          <% matches.each do |match| %>
+            <li><%= match.website.name %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
