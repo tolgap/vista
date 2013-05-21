@@ -1,7 +1,7 @@
 <div class="accordion-group website <%= css_class %>">
   <div class="accordion-heading">
     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-server" href="#accordion-<%= website.id %>">
-      <h3><%= website.name.titleize %></h3>
+      <h3><%= website.name %></h3>
     </a>
     <div class="website-info">
       <p class="link"><%= link_to "Go to " + website.name + " page", website_path(website) %></p>
