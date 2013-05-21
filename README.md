@@ -23,4 +23,4 @@ Create the database by running the migrations
 
     bundle exec rake db:migrate
 
-And once your [WP Vista Collectors](https://github.com/tolgap/wp-vista-collector) start pushing all the information, you will see it on your server.
+And once your [WP Vista Collectors](https://github.com/tolgap/wp-vista-collector) start pushing all the information, you will see it on your master server pages.
