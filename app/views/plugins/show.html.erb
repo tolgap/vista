@@ -4,27 +4,36 @@
   <h1><%= @plugin.name.titleize %> <small>detail in <%= @plugin.website.name %> website</small></h1>
 </div>
 
-  <div class="plugin single">
-    <div class="accordion-heading">
-      <span class="accordion-toggle">
-        <h3><%= @plugin.name.titleize %></h3>
-      </span>
-      <div class="plugin-info">
-        <p class="version">Plugin version: <span class="badge badge-info"><%= @plugin.version %></span></p>
-        <p class="status">Status: <strong><%= @plugin.status %></strong></p>
-        <p class="update">Update: <%= has_update_span(@plugin).html_safe %></p>
-        <p class="updated">Last updated <strong><%= time_ago_in_words(@plugin.updated_at) %></strong> ago</p>
-      </div>
-    </div>
-    <div id="accordion-<%= @plugin.id %>" class="accordion-body collapse in">
-      <div class="accordion-inner">
-        <% matches = Website.has_plugin(@plugin) %>
-        <p>This plugin is also used in <%= matches.count %> other websites:</p>
-        <ul class="websites-list unstyled">
-          <% matches.each do |match| %>
-            <li><%= match.website.name unless match.website.nil? %></li>
-          <% end %>
-        </ul>
-      </div>
+<div class="plugin single">
+  <div class="accordion-heading">
+    <span class="accordion-toggle">
+      <h4>Info</h4>
+    </span>
+    <div class="plugin-info">
+      <p class="version">Plugin version: <span class="badge badge-info"><%= @plugin.version %></span></p>
+      <p class="status">Status: <strong><%= @plugin.status %></strong></p>
+      <p class="update">Update: <%= has_update_span(@plugin).html_safe %></p>
+      <p class="updated">Last updated <strong><%= time_ago_in_words(@plugin.updated_at) %></strong> ago</p>
     </div>
   </div>
+  <div id="accordion-<%= @plugin.id %>" class="accordion-body collapse in">
+    <div class="accordion-inner">
+      <% plugin_info = Plugin.get_wp_plugin_info(@plugin) %>
+      <p>Author: <%= plugin_info.author.html_safe %><br />
+        Latest version: <%= plugin_info.version %><br />
+        Contributors: <% plugin_info.contributors.each do |contrib| %>
+                          <%= contrib.first + "    " %>
+                        <% end %><br />
+        Download link: <%= link_to @plugin.name + ".zip", plugin_info.download_link %><br />
+      </p>
+    </div>
+  </div>
+
+  <% matches = Website.has_plugin(@plugin) %>
+  <p>This plugin is also used in <%= matches.count %> other websites:</p>
+  <ul class="websites-list unstyled">
+    <% matches.each do |match| %>
+      <li><strong><%= link_to(match.website.name, website_path(match.website)) + " (" + match.version + ")"unless match.website.nil? %></strong></li>
+    <% end %>
+  </ul>
+</div>
