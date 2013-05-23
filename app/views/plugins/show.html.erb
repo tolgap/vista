@@ -19,11 +19,10 @@
     <div id="accordion-<%= @plugin.id %>" class="accordion-body collapse in">
       <div class="accordion-inner">
         <% matches = Website.has_plugin(@plugin) %>
-        <% debug(matches) %>
         <p>This plugin is also used in <%= matches.count %> other websites:</p>
         <ul class="websites-list unstyled">
           <% matches.each do |match| %>
-            <li><%= match.website.name %></li>
+            <li><%= match.website.name unless match.website.nil? %></li>
           <% end %>
         </ul>
       </div>

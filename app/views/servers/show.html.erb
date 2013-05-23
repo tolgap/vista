@@ -7,8 +7,21 @@
 </div>
 
 <div class="websites-list accordion" id="accordion-server">
-  <% @server.websites.each do |website| %>
-    <% css_class = cycle('pull-left left', 'pull-left right') %>
-    <%= render :partial => "websites/single", :locals => { :website => website, :css_class => css_class } %>
+	<% if (@server.websites.count > 1) %>
+		<% len = @server.websites.length / 2 %>
+		<% firsthalf = @server.websites[0..len-1] %>
+		<% secondhalf = @server.websites[len..-1] %>
+		<div class="col">
+			<% firsthalf.each do |website| %>
+    		<%= render :partial => "websites/single", :locals => { :website => website } %>
+			<% end %>
+		</div>
+		<div class="col">
+			<% secondhalf.each do |website| %>
+    		<%= render :partial => "websites/single", :locals => { :website => website } %>
+			<% end %>
+		</div>
+	<% else %>
+    <%= render :partial => "websites/single", :locals => { :website => website } %>
   <% end %>
 </div>
