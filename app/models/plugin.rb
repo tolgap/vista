@@ -13,6 +13,12 @@ class Plugin < ActiveRecord::Base
   		res = Net::HTTP.get(uri)
 			
 			result = PHP.unserialize(res)
+      if result.nil?
+        false
+      else
+        result
+      end
+      
   	end
 
   end

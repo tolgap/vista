@@ -16,18 +16,20 @@
       <p class="updated">Last updated <strong><%= time_ago_in_words(@plugin.updated_at) %></strong> ago</p>
     </div>
   </div>
-  <div id="accordion-<%= @plugin.id %>" class="accordion-body collapse in">
-    <div class="accordion-inner">
-      <% plugin_info = Plugin.get_wp_plugin_info(@plugin) %>
-      <p>Author: <%= plugin_info.author.html_safe %><br />
-        Latest version: <%= plugin_info.version %><br />
-        Contributors: <% plugin_info.contributors.each do |contrib| %>
-                          <%= contrib.first + "    " %>
-                        <% end %><br />
-        Download link: <%= link_to @plugin.name + ".zip", plugin_info.download_link %><br />
-      </p>
+  <% plugin_info = Plugin.get_wp_plugin_info(@plugin) %>
+  <% unless plugin_info === false %>
+    <div id="accordion-<%= @plugin.id %>" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <p>Author: <%= plugin_info.author.html_safe %><br />
+          Latest version: <%= plugin_info.version %><br />
+          Contributors: <% plugin_info.contributors.each do |contrib| %>
+                            <%= contrib.first + "    " %>
+                          <% end %><br />
+          Download link: <%= link_to @plugin.name + ".zip", plugin_info.download_link %><br />
+        </p>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <% matches = Website.has_plugin(@plugin) %>
   <p>This plugin is also used in <%= matches.count %> other websites:</p>
