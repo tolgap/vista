@@ -13,24 +13,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-
-(function($){
-  $(document).ready(function () {
-
-    var container = $('#accordion-server');
-
-    container.isotope({
-      itemSelector : '.website',
-      resizable : false,
-      masonry: { columnWidth: container.width() / 2 }
-    });
-
-    $('.website .accordion-toggle').click( function() {
-      window.setTimeout(function () {
-        console.log("delay");
-        container.isotope('reLayout');
-      }, 250);
-    });
-
-  });
-})(jQuery)
