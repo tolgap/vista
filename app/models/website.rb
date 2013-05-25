@@ -3,6 +3,20 @@ class Website < ActiveRecord::Base
   belongs_to :server
   has_many :plugins
 
+  # Instance methods
+  def has_update
+    update = false
+
+    self.plugins.each do |plugin|
+      if (plugin.status === "active" and plugin.updates === "available")
+        update = true
+        break
+      end
+    end
+    
+    update
+  end
+
   # Class methods
   class << self
 
