@@ -5,31 +5,22 @@
 </div>
 
 <div class="accordion" id="accordion">
-
-  <% @servers.each do |server| %>
-    <div class="accordion-group col server">
-      <div class="accordion-heading">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#accordion-<%= server.id %>">
-          <h2><%= server.name %></h2>
-        </a>
-      </div>
-      <div id="accordion-<%= server.id %>" class="accordion-body collapse <%= "in" if server.id === @servers.first.id %>">
-        <div class="accordion-inner">
-          <div class="websites-list">
-
-            <% server.websites.each do |website| %>
-              <div class="website">
-                <h3 class="name"><%= link_to website.name.titleize, website_path(website) %></h3>
-                <p class="version">Core version: <%= website.version %></p>
-                <p class="number-of-plugins">Number of plugins: <%= website.plugins.count %></p>
-                <p class="updated">Last updated <%= time_ago_in_words(website.updated_at) %> ago</p>
-              </div>
-            <% end %>
-
-          </div>
-        </div>
-      </div>
+  <% if (@servers.count > 1) %>
+    <% len = @servers.length / 2 %>
+    <% firsthalf = @servers[0..len-1] %>
+    <% secondhalf = @servers[len..-1] %>
+    <div class="col">
+      <% firsthalf.each do |server| %>
+        <%= render :partial => "servers/single", :locals => { :server => server } %>
+      <% end %>
     </div>
+    <div class="col">
+      <% secondhalf.each do |server| %>
+        <%= render :partial => "servers/single", :locals => { :server => server } %>
+      <% end %>
+    </div>
+  <% else %>
+    <%= render :partial => "servers/single", :locals => { :server => server } %>
   <% end %>
 
 </div>
