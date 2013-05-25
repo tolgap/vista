@@ -9,7 +9,7 @@
 <div class="accordion" id="accordion">
 
   <% @updates.each do |server| %>
-    <div class="accordion-group server">
+    <div class="accordion-group col server">
       <div class="accordion-heading">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#accordion-<%= server.id %>">
           <h2><%= server.name %></h2>
@@ -21,7 +21,8 @@
 
             <% server.websites.each do |website| %>
               <div class="website">
-                <h3 class="name"><%= link_to website.name.titleize, website_path(website) %></h3>
+
+                <h3 class="name"><%= link_to website.name.titleize, website_path(website) %> <span class="label label-important">Has updates</span></h3>
                 <p class="version">Core version: <%= website.version %></p>
                 <p class="number-of-plugins">Number of plugins: <%= website.plugins.count %></p>
                 <p class="updated">Last updated <%= time_ago_in_words(website.updated_at) %> ago</p>
