@@ -6,7 +6,7 @@ class WebsitesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @websites }
+      format.json { render json: @websites.to_json(:include => :plugins) }
     end
   end
 
@@ -17,7 +17,7 @@ class WebsitesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @website }
+      format.json { render json: @website.to_json(:include => :plugins) }
     end
   end
 

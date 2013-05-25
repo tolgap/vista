@@ -6,7 +6,7 @@ class ServersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @servers }
+      format.json { render json: @servers.to_json(:include => { :websites => {:include => :plugins } }) }
     end
   end
 
@@ -17,7 +17,7 @@ class ServersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @server }
+      format.json { render json: @server.to_json(:include => { :websites => {:include => :plugins } }) }
     end
   end
 
@@ -92,6 +92,10 @@ class ServersController < ApplicationController
         true unless website.has_update
       end
     end
-    
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @updates.to_json(:include => { :websites => {:include => :plugins } }) }
+    end
   end
 end
