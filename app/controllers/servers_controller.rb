@@ -80,4 +80,18 @@ class ServersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # GET /updates
+  # GET /updates.json
+  def list_updates
+    @updates = Server.all
+
+    @updates.each do |server|
+      server.websites.delete_if do |website|
+        puts website.has_update
+        true unless website.has_update
+      end
+    end
+    
+  end
 end

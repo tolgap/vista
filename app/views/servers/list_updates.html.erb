@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<div class="intro page-header">
+  <h1>All server<small>'s update information</small></h1>
+  <p>View all available websites with updates for each server.</p>
+  <p>Click on the website name to view all information and updates.</p>
+</div>
+
+<div class="accordion" id="accordion">
+
+  <% @updates.each do |server| %>
+    <div class="accordion-group server">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#accordion-<%= server.id %>">
+          <h2><%= server.name %></h2>
+        </a>
+      </div>
+      <div id="accordion-<%= server.id %>" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <div class="websites-list">
+
+            <% server.websites.each do |website| %>
+              <div class="website">
+                <h3 class="name"><%= link_to website.name.titleize, website_path(website) %></h3>
+                <p class="version">Core version: <%= website.version %></p>
+                <p class="number-of-plugins">Number of plugins: <%= website.plugins.count %></p>
+                <p class="updated">Last updated <%= time_ago_in_words(website.updated_at) %> ago</p>
+              </div>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>
