@@ -9,9 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li <%= 'class="active"' if request.fullpath === root_path %>><a href="<%= root_path %>">Home</a></li>
-        </ul>
+        <%= render_navigation %>
       </div><!--/.nav-collapse -->
     </div>
   </div>
