@@ -17,7 +17,7 @@ class HomeController < ApplicationController
 
     data.each do |wp_website|
       unless Website.exists?(:name => wp_website["name"], :server_id => server.id)
-        website = Website.new(name: wp_website["name"], version: wp_website["version"], server_id: server.id)
+        website = Website.new(name: wp_website["name"], blog_name: wp_website["blog_name"], version: wp_website["version"], server_id: server.id)
         website.save!
       else
         website = Website.where(:name => wp_website["name"], :server_id => server.id).first

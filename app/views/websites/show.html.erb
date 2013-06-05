@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <div class="intro page-header">
-  <h1><%= @website.name.titleize %> <small>detail</small></h1>
+  <h1><%= @website.blog_name %> <small>at folder <%= @website.name %></small></h1>
 </div>
 
 <div class="accordion" id="accordion-website">
   <div class="accordion-group website single">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-website" href="#accordion-<%= @website.id %>">
-        <h3><%= @website.name.titleize %></h3>
+        <h3><%= @website.blog_name %></h3>
       </a>
       <div class="website-info">
         <p class="version">Core version: <span class="badge badge-info"><%= @website.version %></span></p>

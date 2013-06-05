@@ -20,7 +20,7 @@
       <% end %>
     </div>
   <% else %>
-    <%= render :partial => "servers/single", :locals => { :server => server } %>
+    <%= render :partial => "servers/single", :locals => { :server => @servers.first } %>
   <% end %>
 
 </div>

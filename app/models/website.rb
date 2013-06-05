@@ -1,5 +1,5 @@
 class Website < ActiveRecord::Base
-  attr_accessible :name, :version, :server_id
+  attr_accessible :name, :version, :blog_name, :server_id
   belongs_to :server
   has_many :plugins
 
