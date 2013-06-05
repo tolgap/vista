@@ -1,10 +1,10 @@
 <div class="accordion-group website">
   <div class="accordion-heading">
     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-server" href="#accordion-<%= website.id %>">
-      <h3><%= website.blog_name %></h3>
+      <h3><%= website.blog_name %><br/><small>at <%= website.name %></small></h3>
     </a>
     <div class="website-info">
-      <p class="link"><%= link_to "Go to " + website.blog_name + " page", website_path(website) %></p>
+      <p class="link"><%= link_to "Go to detail page", website_path(website) %></p>
       <p class="version">Core version: <span class="badge badge-info"><%= website.version %></span></p>
       <p class="number-of-plugins">
         Number of plugins: <strong><%= website.plugins.count %></strong>
