@@ -5,7 +5,7 @@
     </a>
     <div class="website-info">
       <p class="link"><%= link_to "Go to detail page", website_path(website) %></p>
-      <p class="version">Core version: <span class="badge badge-info"><%= website.version %></span></p>
+      <p class="version">Core version: <span class="badge badge-<%= website.version === @wp_version ? "success" : "important" %>"><%= website.version %></span></p>
       <p class="number-of-plugins">
         Number of plugins: <strong><%= website.plugins.count %></strong>
         <% if has_update(website) %>

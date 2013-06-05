@@ -1,4 +1,6 @@
 class ServersController < ApplicationController
+  before_filter :check_wp_version
+
   # GET /servers
   # GET /servers.json
   def index
@@ -97,5 +99,9 @@ class ServersController < ApplicationController
       format.html
       format.json { render :json => @updates.to_json(:include => { :websites => {:include => :plugins } }) }
     end
+  end
+
+  def check_wp_version
+    @wp_version = Website.check_latest_wp_version
   end
 end
