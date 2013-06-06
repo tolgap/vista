@@ -1,9 +1,11 @@
 <% if (@results.any?) %>
 	<% if (@results.kind_of? Hash) %>
-		<% html = "" %>
-		<% html = "<li>No results found. Did you type your query correctly?</li>" unless @results[:websites].any? and @results[:plugins].any? %>
+	  <% html = "" %>
 		<% html += escape_javascript(render(@results[:websites])) if @results[:websites].any? %>
 		<% html += escape_javascript(render(@results[:plugins])) if @results[:plugins].any? %>
+		<% if (@results[:websites].any? && @results[:plugins].any?) %>
+			<% html = "<li>No results found. Did you type your query correctly?</li>" %>
+		<% end %>
 		$(".results ul").html("<%= html.html_safe %>");
 	<% else %>
 		$(".results ul").html("<%= escape_javascript(render(@results)) %>");

@@ -34,7 +34,7 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
     primary.item :root, 'Home', root_path
     primary.item :servers, 'Servers', servers_path
-    primary.item :updates, 'Updates', url_for(:controller => 'servers', :action => 'list_updates')
+    primary.item :updates, 'Search', url_for(:controller => 'application', :action => 'search')
 
     # you can also specify a css id or class to attach to this particular level
     # works for all levels of the menu
