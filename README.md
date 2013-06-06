@@ -11,7 +11,6 @@ To collect the Wordpress data, you **NEED** the Collector running on your server
 ## Installation
 First you checkout the project
 
-    # On your server with all the Wordpress directories
     git clone git@github.com:tolgap/wp-vista.git
     cd wp-vista/
 
@@ -24,3 +23,20 @@ Create the database by running the migrations
     bundle exec rake db:migrate
 
 And once your [WP Vista Collectors](https://github.com/tolgap/wp-vista-collector) start pushing all the information, you will see it on your master server pages.
+
+## Running the server
+If you don't have Passenger running, you can always use WEBrick to start the server using
+
+    cd wp-vista/
+    rails s
+
+Or if you do have Passenger, your Apache vhost should look like this:
+
+    <VirtualHost *:80>
+        ServerName wp-vista.domain
+        DocumentRoot /path/to/wp-vista/public
+        <Directory /path/to/wp-vista/public>
+            Allow from all
+            Options -MultiViews
+        </Directory>
+    </VirtualHost>
