@@ -3,6 +3,13 @@ class Website < ActiveRecord::Base
   belongs_to :server
   has_many :plugins
 
+  #
+  # ElasticSearch definition
+  #
+  # include Tire::Model::Search
+  # include Tire::Model::Callbacks
+  # after_touch() { tire.update_index }
+
   # Instance methods
   def has_update
     update = false

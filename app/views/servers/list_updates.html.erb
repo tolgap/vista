@@ -2,26 +2,12 @@
 
 <div class="intro page-header">
   <h1>All server<small>'s update information</small></h1>
-  <p>View all available websites with updates for each server.</p>
-  <p>Click on the website name to view all information and updates.</p>
 </div>
 
-<div class="accordion" id="accordion">
-  <% if (@updates.count > 1) %>
-    <% len = @updates.length / 2 %>
-    <% firsthalf = @updates[0..len-1] %>
-    <% secondhalf = @updates[len..-1] %>
-    <div class="col">
-      <% firsthalf.each do |server| %>
-        <%= render :partial => "servers/single", :locals => { :server => server } %>
-      <% end %>
-    </div>
-    <div class="col">
-      <% secondhalf.each do |server| %>
-        <%= render :partial => "servers/single", :locals => { :server => server } %>
-      <% end %>
-    </div>
-  <% else %>
-    <%= render :partial => "servers/single", :locals => { :server => @updates.first } %>
-  <% end %>
+<%= render :partial => "shared/search" %>
+
+<div class="results">
+  <ul>
+
+  </ul>
 </div>

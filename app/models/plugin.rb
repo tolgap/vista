@@ -2,6 +2,13 @@ class Plugin < ActiveRecord::Base
   attr_accessible :name, :status, :updates, :version, :website_id
   belongs_to :website
 
+  #
+  # ElasticSearch definition
+  #
+  # include Tire::Model::Search
+  # include Tire::Model::Callbacks
+  # after_touch() { tire.update_index }
+
   # class methods
   class << self
 

@@ -21,4 +21,14 @@ module PluginsHelper
 		end
 	end
 
+	def create_search_result(plugin)
+		html = '<li class="' + plugin.status + ' plugin">'
+		span = has_update_span(plugin)
+		span += ' <span class="update label label-warning">Inactive</span>' if (plugin.status === "inactive")
+		version = ' <span class="version">(' + plugin.version + ')</span>'
+
+		html += link_to plugin.name.titleize, plugin_path(plugin)
+		html += version + " on website " + plugin.website.name + span + '</li>'
+	end
+
 end

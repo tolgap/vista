@@ -1,0 +1,12 @@
+<p>Use the search box to narrow down your selection. There are some handy helpers to narrow down your search, like:</p>
+<code>@plugin akismet</code> #searches for akismet plugin<br />
+<code>@website foobar</code> #searches for website called foobar<br />
+<code>@core 3.5.1</code> #searches for websites with core version 3.5.1<br />
+<div class="search input-append">
+  <%= form_tag({:controller => "application", :action => "search"}, :method => "get", :class => "search-form", :remote => true) do %>
+    <%= text_field_tag 'query', nil, :placeholder => 'Enter search term...', :class => "span8", :id => "appendedInput" %>
+    <button class="add-on">
+      Search
+    </button>
+  <% end %>
+</div>
