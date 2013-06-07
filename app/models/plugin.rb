@@ -1,13 +1,14 @@
 class Plugin < ActiveRecord::Base
-  attr_accessible :name, :status, :updates, :version, :website_id
+  attr_accessible :name, :status, :has_update, :version, :website_id
   belongs_to :website
 
   #
-  # ElasticSearch definition
+  # Sunspot search definition
   #
-  # include Tire::Model::Search
-  # include Tire::Model::Callbacks
-  # after_touch() { tire.update_index }
+  searchable do
+    text :name, :version, :status
+    boolean :has_update
+  end
 
   # class methods
   class << self

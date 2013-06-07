@@ -1,21 +1,23 @@
 class Website < ActiveRecord::Base
-  attr_accessible :name, :version, :blog_name, :server_id
+  attr_accessible :name, :version, :has_update, :blog_name, :server_id
   belongs_to :server
   has_many :plugins
 
   #
-  # ElasticSearch definition
+  # Sunspot search definition
   #
-  # include Tire::Model::Search
-  # include Tire::Model::Callbacks
-  # after_touch() { tire.update_index }
+  searchable do
+    text :name, :version, :blog_name
+    boolean :has_update
+    integer :server_id
+  end
 
   # Instance methods
-  def has_update
+  def has_plugin_update
     update = false
 
     self.plugins.each do |plugin|
-      if (plugin.status === "active" and plugin.updates === "available")
+      if (plugin.status === "active" and plugin.has_update?)
         update = true
         break
       end

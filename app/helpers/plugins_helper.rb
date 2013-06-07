@@ -14,7 +14,7 @@ module PluginsHelper
 	end
 
 	def has_update_span(plugin)
-		if (plugin.updates === "available")
+		if (plugin.has_update?)
 			span = ' <span class="update label label-important">Has update</span>'
 		else
 			span = ' <span class="update label label-success">Up to date</span>'
