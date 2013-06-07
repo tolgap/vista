@@ -11,16 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130605101617) do
+ActiveRecord::Schema.define(:version => 20130607123004) do
 
   create_table "plugins", :force => true do |t|
     t.string   "name"
     t.string   "status"
-    t.string   "updates"
     t.string   "version"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "website_id"
+    t.boolean  "has_update"
   end
 
   create_table "servers", :force => true do |t|
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20130605101617) do
     t.datetime "updated_at", :null => false
     t.integer  "server_id"
     t.string   "blog_name"
+    t.boolean  "has_update"
   end
 
 end

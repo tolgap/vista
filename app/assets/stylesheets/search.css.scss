@@ -6,7 +6,20 @@ button {
   margin: 50px 172px 50px 172px;
 }
 
+.sorting {
+  margin-bottom: 20px;
+
+  .sort-field {
+    margin: 0 20px;
+    label {
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+}
+
 .results {
+  display: inline-block;
 
   .number {
     font-weight: bold;

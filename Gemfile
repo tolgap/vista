@@ -24,6 +24,13 @@ gem 'jquery-rails'
 gem 'php-serialize'
 gem 'simple-navigation'
 
+# We use sunspot with solr for searching
+gem 'sunspot_rails'
+
+group :development do
+  gem 'sunspot_solr'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

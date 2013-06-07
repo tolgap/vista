@@ -14,9 +14,7 @@ Overview::Application.routes.draw do
   # Sample of regular route:
   match 'save-all' => 'home#save_all'
 
-  match 'search'   => 'application#search', :as => :search
-
-  match 'updates'  => 'servers#list_updates'
+  match 'search'   => 'search#search'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
