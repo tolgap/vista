@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
 
   def search
     if (params[:query])
-      q = params[:query].split(" ")
+      @search_query = params[:query]
+      q = @search_query.split(" ")
 
       if (q.include?('@plugin'))
         q.delete('@plugin')
@@ -14,10 +15,9 @@ class ApplicationController < ActionController::Base
         q.delete('@core')
         @results = Website.where("version = ?", q).order(:name).all
       else
-        @results = {
-          :websites => Website.where("name LIKE ? OR blog_name LIKE ? OR version = ?", q, q, q).order(:name).all,
-          :plugins => Plugin.where("name LIKE ? OR version LIKE ?", q, q).order(:name).all
-        }
+        websites =  Website.where("name LIKE ? OR blog_name LIKE ? OR version = ?", q, q, q).order(:name).all,
+        plugins  = Plugin.where("name LIKE ? OR version LIKE ?", q, q).order(:name).all
+        @results = (websites + plugins).flatten
       end
     end
 

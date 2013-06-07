@@ -1,15 +1,9 @@
-<% if (@results.any?) %>
-	<% if (@results.kind_of? Hash) %>
-	  <% html = "" %>
-		<% html += escape_javascript(render(@results[:websites])) if @results[:websites].any? %>
-		<% html += escape_javascript(render(@results[:plugins])) if @results[:plugins].any? %>
-		<% if (@results[:websites].any? && @results[:plugins].any?) %>
-			<% html = "<li>No results found. Did you type your query correctly?</li>" %>
-		<% end %>
-		$(".results ul").html("<%= html.html_safe %>");
-	<% else %>
-		$(".results ul").html("<%= escape_javascript(render(@results)) %>");
-	<% end %>
+// Empty the result number
+$(".results .number").html("");
+
+<% if (@results.present?) %>
+	$(".results ul").html("<%= escape_javascript(render(@results)) %>");
+	$(".results .number").html("<%= @results.count %> results found");
 <% else %>
-	$(".results ul").html("<li>No results found. Did you type your query correctly?</li>");
+	$(".results ul").html("<li>No results found for <%= @search_query %>. Did you type your query correctly?</li>");
 <% end %>
