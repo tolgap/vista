@@ -1,19 +1,21 @@
-<div class="accordion-group website">
+<div class="accordion-group website <%= 'has-errors' if website.has_errors? %>">
   <div class="accordion-heading">
     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-server" href="#accordion-<%= website.id %>">
       <h3><%= website.blog_name %><br/><small>at <%= website.name %></small></h3>
     </a>
     <div class="website-info">
-      <p class="link"><%= link_to "Go to detail page", website_path(website) %></p>
-      <p class="version">Core version: <span class="badge badge-<%= website.has_update? ? "success" : "important" %>"><%= website.version %></span></p>
-      <p class="number-of-plugins">
-        Number of plugins: <strong><%= website.plugins.count %></strong>
-        <% if website.has_plugin_update %>
-          <span class="label label-important">Has plugin updates</span>
-        <% else %>
-          <span class="label label-success">Plugins up-to-date</span>
-        <% end %>
-      </p>
+      <% if !website.has_errors? %>
+        <p class="link"><%= link_to "Go to detail page", website_path(website) %></p>
+        <p class="version">Core version: <span class="badge badge-<%= website.has_update? ? "success" : "important" %>"><%= website.version %></span></p>
+        <p class="number-of-plugins">
+          Number of plugins: <strong><%= website.plugins.count %></strong>
+          <% if website.has_plugin_update %>
+            <span class="label label-important">Has plugin updates</span>
+          <% else %>
+            <span class="label label-success">Plugins up-to-date</span>
+          <% end %>
+        </p>
+      <% end %>
       <p class="updated">Last updated <strong><%= time_ago_in_words(website.updated_at) %></strong> ago</p>
     </div>
   </div>

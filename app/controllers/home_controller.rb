@@ -20,15 +20,18 @@ class HomeController < ApplicationController
     data.each do |wp_website|
       core_update = wp_website["has_update"] === "none"
       unless Website.exists?(:name => wp_website["name"], :server_id => server.id)
-        website = Website.new(name: wp_website["name"], blog_name: wp_website["blog_name"], has_update: core_update, version: wp_website["version"], server_id: server.id)
+        website = Website.new(name: wp_website["name"], blog_name: wp_website["blog_name"], has_update: core_update, version: wp_website["version"], server_id: server.id, has_errors: wp_website["has_errors"])
       else
         website = Website.where(:name => wp_website["name"], :server_id => server.id).first
         website.version    = wp_website["version"]
+        website.has_errors = wp_website["has_errors"]
         website.has_update = core_update
       end
       
       website.touch
       website.save!
+
+      next if wp_website["plugins"].nil?
 
       wp_website["plugins"].each do |plugin|
         plugin_update = plugin["update"] === "available"
