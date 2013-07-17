@@ -1,5 +1,7 @@
 class Website < ActiveRecord::Base
-  attr_accessible :name, :version, :has_update, :blog_name, :server_id, :has_errors
+  serialize :website_errors
+
+  attr_accessible :name, :version, :has_update, :blog_name, :server_id, :has_errors, :website_errors
   belongs_to :server
   has_many :plugins
 
