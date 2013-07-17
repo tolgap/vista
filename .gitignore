@@ -18,3 +18,4 @@ Gemfile.lock
 
 # Ignore solr bundle
 /solr
+!/solr/conf/schema.xml
