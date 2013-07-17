@@ -13,6 +13,8 @@ class HomeController < ApplicationController
       server.save!
     else
       server = Server.find_by_name(wp_server)
+      server.touch
+      server.save!
     end
 
     data.each do |wp_website|
@@ -25,6 +27,7 @@ class HomeController < ApplicationController
         website.has_update = core_update
       end
       
+      website.touch
       website.save!
 
       wp_website["plugins"].each do |plugin|
@@ -38,6 +41,7 @@ class HomeController < ApplicationController
           plugin.has_update = plugin_update
         end
 
+        plugin.touch
         plugin.save!
       end
     end

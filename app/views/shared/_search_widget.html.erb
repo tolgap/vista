@@ -1,6 +1,6 @@
 <%= form_tag({:controller => "search", :action => "search"}, :method => "get", :class => "search-form", :remote => true) do %>
-  <div class="search input-append">
-    <%= text_field_tag 'query', nil, :placeholder => 'Enter search term...', :class => "span8", :id => "appendedInput" %>
+  <div class="search input-append span8">
+    <%= text_field_tag 'query', nil, :placeholder => 'Enter search term...', :class => "span7", :id => "appendedInput" %>
     <button class="add-on">
       Search
     </button>
@@ -8,8 +8,10 @@
 
   <div class="row">
     <section class="results span8 pull-left">
-      <p class="number"></p>
+      <h3>Results</h3>
+      <span class="number"></span>
       <ul class="unstyled">
+        <li>Use the search bar above</li>
       </ul>
     </section>
 
