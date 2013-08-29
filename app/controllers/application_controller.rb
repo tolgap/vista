@@ -37,5 +37,15 @@ class ApplicationController < ActionController::Base
     when "update_available"
     end
   end
-  
+
+protected
+
+  def load_server
+    @server = Server.find(params[:server_id])
+  end
+
+  def load_website
+    @website = Website.find(params[:website_id])
+  end
+
 end

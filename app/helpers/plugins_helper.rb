@@ -9,7 +9,7 @@ module PluginsHelper
 
 		version = ' <span class="version">(' + plugin.version + ')</span>'
 
-		html += link_to plugin.name.titleize, plugin_path(plugin)
+		html += link_to plugin.name.titleize, [plugin.website.server, plugin.website, plugin]
 		html += version + span + '</li>'
 	end
 
@@ -27,7 +27,7 @@ module PluginsHelper
 		span += ' <span class="update label label-warning">Inactive</span>' if (plugin.status === "inactive")
 		version = ' <span class="version">(' + plugin.version + ')</span>'
 
-		html += link_to plugin.name.titleize, plugin_path(plugin)
+		html += link_to plugin.name.titleize, [plugin.website.server, plugin.website, plugin]
 		html += version + " on website " + plugin.website.name + span + '</li>'
 	end
 

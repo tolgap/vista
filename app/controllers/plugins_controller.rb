@@ -1,4 +1,6 @@
 class PluginsController < ApplicationController
+  before_filter :load_server, :load_website
+
   # GET /plugins
   # GET /plugins.json
   def index
@@ -44,7 +46,7 @@ class PluginsController < ApplicationController
 
     respond_to do |format|
       if @plugin.save
-        format.html { redirect_to @plugin, notice: 'Plugin was successfully created.' }
+        format.html { redirect_to [@server, @website, Plugin], notice: 'Plugin was successfully created.' }
         format.json { render json: @plugin, status: :created, location: @plugin }
       else
         format.html { render action: "new" }
@@ -60,7 +62,7 @@ class PluginsController < ApplicationController
 
     respond_to do |format|
       if @plugin.update_attributes(params[:plugin])
-        format.html { redirect_to @plugin, notice: 'Plugin was successfully updated.' }
+        format.html { redirect_to [@server, @website, @plugin], notice: 'Plugin was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

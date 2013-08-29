@@ -7,7 +7,12 @@
   <h2>Servers:</h2>
   <ol>
     <% @servers.each do |server| %>
-      <li><h3><%= link_to server.name, server_path(server) %></h3></li>
+      <li>
+        <h3>
+          <%= link_to server.name, server_path(server) %>
+          <small>(<%= server.websites.count %> websites)</small>
+        </h3>
+      </li>
     <% end %>
   </ol>
 </div>

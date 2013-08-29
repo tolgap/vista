@@ -11,7 +11,7 @@
         <% server.websites.each do |website| %>
           <div class="website">
 
-            <h3 class="name"><%= link_to website.blog_name, website_path(website) %> <%= '<span class="label label-important">Has updates</span>'.html_safe if request.fullpath === '/updates' %></h3>
+            <h3 class="name"><%= link_to website.blog_name, [@server, website] %> <%= '<span class="label label-important">Has updates</span>'.html_safe if request.fullpath === '/updates' %></h3>
             <p class="version">Core version: <%= website.version %></p>
             <p class="number-of-plugins">Number of plugins: <%= website.plugins.count %></p>
             <p class="updated">Last updated <%= time_ago_in_words(website.updated_at) %> ago</p>

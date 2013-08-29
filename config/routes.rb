@@ -1,19 +1,19 @@
 Overview::Application.routes.draw do
-  resources :servers
 
-
-  resources :websites
-
-
-  resources :plugins
+  resources :servers do
+    resources :websites do
+      collection do
+        post 'save'
+      end
+      resources :plugins
+    end
+  end
 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
-  match 'save-all' => 'home#save_all'
-
   match 'search'   => 'search#search'
   # Keep in mind you can assign values other than :controller and :action
 

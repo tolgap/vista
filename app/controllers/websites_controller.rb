@@ -1,4 +1,6 @@
 class WebsitesController < ApplicationController
+  before_filter :load_server
+
   # GET /websites
   # GET /websites.json
   def index
@@ -37,15 +39,22 @@ class WebsitesController < ApplicationController
     @website = Website.find(params[:id])
   end
 
+  # POST /websites/save
+  # POST /websites/save.json
+  def save
+    Website.exists?(name: params[:website][:name]) ? update : create
+  end
+
   # POST /websites
   # POST /websites.json
   def create
-    @website = Website.new(params[:website])
+    @server  = Server.find_or_create_by_name(params[:server_id])
+    @website = @server.websites.new(params[:website])
 
     respond_to do |format|
       if @website.save
-        format.html { redirect_to @website, notice: 'Website was successfully created.' }
-        format.json { render json: @website, status: :created, location: @website }
+        format.html { redirect_to [@server, Website], notice: 'Website was successfully created.' }
+        format.json { render json: @website, status: :created, location: [@server, @website] }
       else
         format.html { render action: "new" }
         format.json { render json: @website.errors, status: :unprocessable_entity }
@@ -56,11 +65,11 @@ class WebsitesController < ApplicationController
   # PUT /websites/1
   # PUT /websites/1.json
   def update
-    @website = Website.find(params[:id])
+    @website = Website.find_by_name(params[:website][:name])
 
     respond_to do |format|
       if @website.update_attributes(params[:website])
-        format.html { redirect_to @website, notice: 'Website was successfully updated.' }
+        format.html { redirect_to [@server, @website], notice: 'Website was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +85,7 @@ class WebsitesController < ApplicationController
     @website.destroy
 
     respond_to do |format|
-      format.html { redirect_to websites_url }
+      format.html { redirect_to server_websites_url(@server) }
       format.json { head :no_content }
     end
   end

@@ -35,7 +35,7 @@
   <p>This plugin is also used in <%= matches.count %> other websites:</p>
   <ul class="websites-list unstyled">
     <% matches.each do |match| %>
-      <li><strong><%= link_to(match.website.blog_name, website_path(match.website)) + " (on version " + match.version + ")"unless match.website.nil? %></strong></li>
+      <li><strong><%= link_to(match.website.blog_name, [@server, match.website]) + " (on version " + match.version + ")"unless match.website.nil? %></strong></li>
     <% end %>
   </ul>
 </div>

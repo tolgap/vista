@@ -5,7 +5,7 @@
     </a>
     <div class="website-info">
       <% if !website.has_errors? %>
-        <p class="link"><%= link_to "Go to detail page", website_path(website) %></p>
+        <p class="link"><%= link_to "Go to detail page", [@server, website] %></p>
         <p class="version">Core version: <span class="badge badge-<%= website.has_update? ? "success" : "important" %>"><%= website.version %></span></p>
         <p class="number-of-plugins">
           Number of plugins: <strong><%= website.plugins.count %></strong>

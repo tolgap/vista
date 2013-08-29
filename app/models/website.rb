@@ -1,9 +1,13 @@
 class Website < ActiveRecord::Base
   serialize :website_errors
 
-  attr_accessible :name, :version, :has_update, :blog_name, :server_id, :has_errors, :website_errors
+  attr_accessible :name, :version, :has_update, :blog_name,
+    :has_errors, :website_errors, :plugins_attributes
+
   belongs_to :server
   has_many :plugins
+
+  accepts_nested_attributes_for :plugins
 
   #
   # Sunspot search definition
@@ -24,7 +28,7 @@ class Website < ActiveRecord::Base
         break
       end
     end
-    
+
     update
   end
 
