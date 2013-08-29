@@ -24,6 +24,17 @@ Create the database by running the migrations
 
 And once your [WP Vista Collectors](https://github.com/tolgap/wp-vista-collector) start pushing all the information, you will see it on your master server pages.
 
+## Searching
+For searching, WP Vista uses Sunspot Solr search. The `Gemfile` has been setup to install a Sunspot instance *with* Solr included, if you don't have it yet.
+
+To get Sunspot running
+
+    bundle exec rake sunspot:solr:run #foreground
+
+Or to run it in the background
+
+    bundle exec rake sunspot:solr:start #background
+
 ## Running the server
 If you don't have Passenger running, you can always use WEBrick to start the server using
 
