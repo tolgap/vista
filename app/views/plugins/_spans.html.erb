@@ -1,0 +1,9 @@
+<% if (plugin.has_update?) %>
+  <span class="update label label-important">Has update</span>
+<% else %>
+  <span class="update label label-success">Up to date</span>
+<% end %>
+
+<% if plugin.status == 'inactive' %>
+  <span class="update label label-warning">Inactive</span>
+<% end %>

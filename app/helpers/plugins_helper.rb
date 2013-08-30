@@ -1,18 +1,5 @@
 module PluginsHelper
 
-	def create_list_item(plugin)
-		html = '<li class="' + plugin.status + ' plugin">'
-
-		span = has_update_span(plugin)
-
-		span += ' <span class="update label label-warning">Inactive</span>' if (plugin.status === "inactive")
-
-		version = ' <span class="version">(' + plugin.version + ')</span>'
-
-		html += link_to plugin.name.titleize, [plugin.website.server, plugin.website, plugin]
-		html += version + span + '</li>'
-	end
-
 	def has_update_span(plugin)
 		if (plugin.has_update?)
 			span = ' <span class="update label label-important">Has update</span>'
