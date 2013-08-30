@@ -22,6 +22,6 @@
       <% end %>
     </div>
   <% else %>
-    <%= render :partial => "websites/single", :locals => { :website => website } %>
+    <%= render :partial => "websites/single", :locals => { :website => @server.websites.first } %>
   <% end %>
 </div>

@@ -15,7 +15,7 @@ class PluginsController < ApplicationController
   # GET /plugins/1
   # GET /plugins/1.json
   def show
-    @plugin = Plugin.find(params[:id])
+    @plugin = Plugin.find(params[:name])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +36,7 @@ class PluginsController < ApplicationController
 
   # GET /plugins/1/edit
   def edit
-    @plugin = Plugin.find(params[:id])
+    @plugin = Plugin.find(params[:name])
   end
 
   # POST /plugins
@@ -58,7 +58,7 @@ class PluginsController < ApplicationController
   # PUT /plugins/1
   # PUT /plugins/1.json
   def update
-    @plugin = Plugin.find(params[:id])
+    @plugin = Plugin.find(params[:name])
 
     respond_to do |format|
       if @plugin.update_attributes(params[:plugin])
@@ -74,7 +74,7 @@ class PluginsController < ApplicationController
   # DELETE /plugins/1
   # DELETE /plugins/1.json
   def destroy
-    @plugin = Plugin.find(params[:id])
+    @plugin = Plugin.find(params[:name])
     @plugin.destroy
 
     respond_to do |format|

@@ -23,6 +23,7 @@ end
 gem 'jquery-rails'
 gem 'php-serialize'
 gem 'simple-navigation'
+gem 'pry'
 
 # We use sunspot with solr for searching
 gem 'sunspot_rails'
