@@ -45,6 +45,26 @@ class WebsitesController < ApplicationController
     Website.exists?(name: params[:website][:name]) ? update : create
   end
 
+  # POST /websites/create_or_update
+  # POST /websites/create_or_update.json
+  def create_or_update
+    @server = Server.find_or_create_by_name(params.delete(:server))
+    @website = @server.websites.find_or_create_by_name(params[:website][:name])
+    @website.update_attributes(params[:website].except(:plugins))
+
+    respond_to do |format|
+      if @website.save!
+        process_plugins
+
+        format.html { redirect_to [@server, Website], notice: 'Website was successfully created.' }
+        format.json { head :no_Content, status: :created }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @website.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # POST /websites
   # POST /websites.json
   def create
@@ -97,7 +117,7 @@ class WebsitesController < ApplicationController
 private
 
   def process_plugins
-    params[:plugins].each do |p_param|
+    params[:website][:plugins].each do |p_param|
       plugin = @website.plugins.find_or_create_by_name(p_param[:name])
       p_param.each do |attribute, value|
         plugin.send("#{attribute.to_s}=", value)

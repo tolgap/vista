@@ -3,8 +3,9 @@ Overview::Application.routes.draw do
   resources :servers do
     resources :websites do
       collection do
-        post 'save'
+        post 'create_or_update'
       end
+
       resources :plugins
     end
   end

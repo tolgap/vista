@@ -1,20 +1,21 @@
 class Website < ActiveRecord::Base
-  serialize :website_errors
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   attr_accessible :name, :version, :has_update, :blog_name,
     :has_errors, :website_errors, :plugin
 
+  mapping do
+    indexes :name, analyzer: 'snowball'
+    indexes :version, analyzer: 'snowball'
+    indexes :has_update, type: :boolean
+    indexes :has_error, type: :boolean
+  end
+
+  serialize :website_errors
+
   belongs_to :server
   has_many :plugins
-
-  #
-  # Sunspot search definition
-  #
-  searchable do
-    text :name, :version, :blog_name
-    boolean :has_update
-    integer :server_id
-  end
 
   # Instance methods
   def has_plugin_update

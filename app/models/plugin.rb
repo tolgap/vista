@@ -1,13 +1,15 @@
 class Plugin < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   attr_accessible :name, :status, :has_update, :version
   belongs_to :website
 
-  #
-  # Sunspot search definition
-  #
-  searchable do
-    text :name, :version, :status
-    boolean :has_update
+  mapping do
+    indexes :name, analyzer: 'snowball'
+    indexes :version, analyzer: 'snowball'
+    indexes :has_update, type: :boolean
+    indexes :status
   end
 
   # class methods
