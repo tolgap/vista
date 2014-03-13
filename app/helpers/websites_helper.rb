@@ -21,4 +21,11 @@ module WebsitesHelper
 		html += version + location + '</li>'
 	end
 
+	def row_classes_for(website)
+		classes = []
+		classes << "has-errors" if website.has_errors?
+		classes << website.has_update?
+		classes.join(' ')
+	end
+
 end

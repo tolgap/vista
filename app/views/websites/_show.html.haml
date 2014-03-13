@@ -1,0 +1,46 @@
+.field
+  %p
+    %span.name Version:
+    = @website.version
+.field
+  %p
+    %span.name Project name:
+    = @website.name
+.field
+  %p
+    %span.name Last updated:
+    = @website.updated_at
+.field
+  %p
+    %span.name Has update:
+    = @website.has_update?
+
+%h2 Plugins:
+
+- unless @website.plugins.blank? && @website.has_errors?
+  %table.table.plugins.table-striped.datatable
+    %thead
+      %tr
+        %th Name
+        %th Version
+        %th Has update
+        %th Status
+    %tbody
+      - @website.plugins.each do |plugin|
+        %tr
+          %td= link_to plugin.name, [@website.server, @website, plugin]
+          %td= plugin.version
+          %td= plugin.has_update?
+          %td= plugin.status.titleize
+    %tfoot
+      %tr
+        %th
+        %th
+        %th
+        %th
+        %th
+
+:javascript
+  jQuery(document).ready(function() {
+    window.DataTable.Plugin();
+  });

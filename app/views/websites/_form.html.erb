@@ -1,4 +1,4 @@
-<%= form_for(@website) do |f| %>
+<%= form_for([@server, @website]) do |f| %>
   <% if @website.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@website.errors.count, "error") %> prohibited this website from being saved:</h2>

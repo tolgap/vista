@@ -12,4 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery-migrate-1.2.1.min
+//= require bootstrap
+//= require dataTables/jquery.dataTables
+//= require datatables-bootstrap
+//= require jquery.dataTables.columnFilter
+//= require datatables
+//= require search

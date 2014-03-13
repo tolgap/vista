@@ -18,7 +18,8 @@ class WebsitesController < ApplicationController
     @website = Website.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
+      format.js   # show.js.erb
       format.json { render json: @website.to_json(:include => :plugins) }
     end
   end
