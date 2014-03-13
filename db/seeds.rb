@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+server = FactoryGirl.create(:server)
+
+(5..20).to_a.sample.times do
+  server.websites << FactoryGirl.create(:website)
+end
