@@ -5,5 +5,5 @@ $(".results .number").html("");
 	$(".results ul").html("<%= escape_javascript(render(@results)) %>");
 	$(".results .number").html("<%= @results.count %> results found");
 <% else %>
-	$(".results ul").html("<li>No results found for <strong><%= @search_query %></strong>. Did you type your query correctly?</li>");
+	$(".results ul").html("<li>No results found for <strong><%= params[:q] %></strong>. Did you type your query correctly?</li>");
 <% end %>

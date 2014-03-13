@@ -1,0 +1,19 @@
+%p#id= notice
+
+.into.page-header
+  %h1
+    Search all
+    %small in websites and plugins
+
+.explanation
+  %p Use the search box to narrow down your selection. There are some handy helpers to narrow down your search in the sidebar.
+
+  %p You can search explicitly on websites and plugins.
+
+= render :partial => "shared/search_widget"
+
+:javascript
+  jQuery(document).ready(function() {
+    window.Search.perform_search();
+    window.Search.instant_search();
+  });

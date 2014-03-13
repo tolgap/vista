@@ -1,6 +1,6 @@
 <%= form_tag({:controller => "search", :action => "search"}, :method => "get", :class => "search-form", :remote => true) do %>
   <div class="search input-append span8">
-    <%= text_field_tag 'query', nil, :placeholder => 'Enter search term...', :class => "span7", :id => "appendedInput" %>
+    <%= text_field_tag 'q', nil, :placeholder => 'Enter search term...', :class => "span7", :id => "appendedInput" %>
     <button class="add-on">
       Search
     </button>
@@ -18,35 +18,27 @@
     <aside class="sidebar span4 pull-right">
       <div class="sorting type">
         <p>Search for</p>
-        <div class="sort-field">
-          <%= radio_button_tag :type, "all", :checked => 'checked' %>
-          <%= label_tag :type_all, "All" %>
-        </div>
-        <div class="sort-field">
-          <%= radio_button_tag :type, "website" %>
+        <div class="sort-field ajax-input">
+          <%= radio_button_tag :type, "website", :checked => 'checked' %>
           <%= label_tag :type_website, "Websites" %>
         </div>
-        <div class="sort-field">
+        <div class="sort-field ajax-input">
           <%= radio_button_tag :type, "plugin" %>
           <%= label_tag :type_plugin, "Plugins" %>
-        </div>
-        <div class="sort-field">
-          <%= radio_button_tag :type, "core" %>
-          <%= label_tag :type_core, "Core" %>
         </div>
       </div>
 
       <div class="sorting sort">
         <p>Order results by</p>
-        <div class="sort-field">
+        <div class="sort-field ajax-input">
           <%= radio_button_tag :sort, "name", :checked => 'checked' %>
           <%= label_tag :sort_name, "Name" %>
         </div>
-        <div class="sort-field">
+        <div class="sort-field ajax-input">
           <%= radio_button_tag :sort, "version" %>
           <%= label_tag :sort_version, "Version" %>
         </div>
-        <div class="sort-field">
+        <div class="sort-field ajax-input">
           <%= radio_button_tag :sort, "update_available" %>
           <%= label_tag :sort_update_available, "Has update" %>
         </div>

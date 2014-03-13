@@ -1,0 +1,25 @@
+- unless @results.blank?
+  %table.table.table-striped.search.datatable
+    %thead
+      %tr
+        %th Name
+        %th Version
+        %th Has update
+    %tbody
+      - @results.each do |result|
+        %tr
+          %td= link_to result.name
+          %td= result.version
+          %td= result.has_update?
+    %tfoot
+      %tr
+        %th
+        %th
+        %th
+
+  :javascript
+    jQuery(document).ready(function() {
+      window.DataTable.Search();
+    });
+- else
+  = "No results found"

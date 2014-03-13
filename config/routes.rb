@@ -15,7 +15,8 @@ Overview::Application.routes.draw do
   # first created -> highest priority.
 
   # Sample of regular route:
-  match 'search'   => 'search#search'
+  match 'search'   => 'search#index'
+  match 'search/search' => 'search#search'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
