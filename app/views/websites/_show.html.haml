@@ -30,9 +30,9 @@
         %th
     %tbody
       - @website.plugins.each do |plugin|
-        %tr
+        %tr{class: "plugin #{plugin.status}"}
           %td= link_to plugin.name, [@website.server, @website, plugin]
-          %td= plugin.version
+          %td= row_class_version(plugin)
           %td= plugin.has_update?
           %td= plugin.status.titleize
           %td= link_to("info",
