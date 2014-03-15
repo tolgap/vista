@@ -24,6 +24,10 @@ group :assets do
   gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 end
 
+group :test do
+  gem 'rspec-rails'
+end
+
 gem 'jquery-rails'
 gem 'php-serialize'
 gem 'simple-navigation'
