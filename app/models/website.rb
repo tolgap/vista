@@ -5,6 +5,8 @@ class Website < ActiveRecord::Base
   attr_accessible :name, :version, :has_update, :blog_name,
     :has_errors, :website_errors, :plugin
 
+  index_name "#{Rails.application.class.parent_name.downcase}_websites"
+
   mapping do
     indexes :name, analyzer: 'snowball'
     indexes :version, analyzer: 'snowball'

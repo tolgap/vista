@@ -5,6 +5,8 @@ class Plugin < ActiveRecord::Base
   attr_accessible :name, :status, :has_update, :version
   belongs_to :website
 
+  index_name "#{Rails.application.class.parent_name.downcase}_plugins"
+
   mapping do
     indexes :name, analyzer: 'snowball'
     indexes :version, analyzer: 'snowball'
