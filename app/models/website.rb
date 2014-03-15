@@ -5,7 +5,7 @@ class Website < ActiveRecord::Base
   attr_accessible :name, :version, :has_update, :blog_name,
     :has_errors, :website_errors, :plugin
 
-  index_name "#{Rails.application.class.parent_name.downcase}_websites"
+  index_name "#{Rails.application.class.parent_name.downcase}_#{Rails.env}_websites"
 
   mapping do
     indexes :name, analyzer: 'snowball'
@@ -21,23 +21,15 @@ class Website < ActiveRecord::Base
 
   # Instance methods
   def has_plugin_update
-    update = false
-
-    self.plugins.each do |plugin|
-      if (plugin.status === "active" and plugin.has_update?)
-        update = true
-        break
-      end
-    end
-
-    update
+    update_info = plugins.map { |p| p.status == "active" && p.has_update? }
+    update_info.include?(true)
   end
 
   # Class methods
   class << self
 
     def has_plugin(plugin)
-      matches = Plugin.where(:name => plugin.name).all
+      Plugin.where('name = ? AND id != ?', plugin.name, plugin.id)
     end
 
     def check_latest_wp_version
