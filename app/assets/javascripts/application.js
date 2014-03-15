@@ -19,3 +19,5 @@
 //= require jquery.dataTables.columnFilter
 //= require datatables
 //= require search
+//= require websites
+//= require plugins

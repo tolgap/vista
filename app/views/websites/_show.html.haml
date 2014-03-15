@@ -15,6 +15,8 @@
     %span.name Has update:
     = @website.has_update?
 
+= render "plugins/description_modal"
+
 %h2 Plugins:
 
 - unless @website.plugins.blank? && @website.has_errors?
@@ -25,6 +27,7 @@
         %th Version
         %th Has update
         %th Status
+        %th
     %tbody
       - @website.plugins.each do |plugin|
         %tr
@@ -32,6 +35,9 @@
           %td= plugin.version
           %td= plugin.has_update?
           %td= plugin.status.titleize
+          %td= link_to("info",
+            [:description, @server, @website, plugin],
+            remote: true, data: { toggle: "modal", target: "#plugin-modal" })
     %tfoot
       %tr
         %th

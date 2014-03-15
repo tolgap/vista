@@ -15,11 +15,24 @@ class PluginsController < ApplicationController
   # GET /plugins/1
   # GET /plugins/1.json
   def show
-    @plugin = Plugin.find(params[:name])
+    @plugin = Plugin.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @plugin }
+    end
+  end
+
+  # GET /plugins/1/description
+  # GET /plugins/1/description.js
+  def description
+    @plugin = Plugin.find(params[:id])
+    @info   = @plugin.wp_info
+
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render json: { plugin: @plugin, info: @info } }
     end
   end
 

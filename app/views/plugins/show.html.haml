@@ -1,0 +1,46 @@
+.intro.page-header
+  %h1
+    = @plugin.name.titleize
+    %small
+      plugin detail in
+      = @plugin.website.name
+      website
+
+= render "description_modal"
+
+.row
+  .plugin.single.span6
+    %h4 Info
+    .plugin-info
+      %p.version
+        Plugin version:
+        %span.badge.badge-info= @plugin.version
+      %p.status
+        Status:
+        %strong= @plugin.status
+      %p.update
+        Update:
+        = has_update_span(@plugin).html_safe
+      %p.updated
+        Last updated
+        %strong= time_ago_in_words(@plugin.updated_at)
+        ago
+
+    - matches = Website.has_plugin(@plugin)
+    %p
+      This plugin is also used in
+      = matches.count
+      other websites:
+    %ul.websites-list.unstyled
+      - matches.each do |match|
+        - unless match.website.nil?
+          %li
+            %strong
+              = link_to match.website.blog_name, [@server, match.website]
+              - surround "(", ")" do
+                = match.version
+
+  .wp-repo.span6
+    = link_to("Get plugin info from Wordpress repository",
+      [:description, @server, @website, @plugin],
+      remote: true, data: { toggle: "modal", target: "#plugin-modal" })

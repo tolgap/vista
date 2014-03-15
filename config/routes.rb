@@ -6,7 +6,11 @@ Overview::Application.routes.draw do
         post 'create_or_update'
       end
 
-      resources :plugins
+      resources :plugins do
+        member do
+          get 'description'
+        end
+      end
     end
   end
 

@@ -1,0 +1,22 @@
+%p
+  %strong Homepage:
+  = link_to @info.name, @info.homepage, target: "_blank"
+
+%p
+  %strong Slug:
+  = @info.slug
+
+%p
+  %strong Latest version:
+  = @info.version
+
+%p
+  %strong Author:
+  = @info.author.html_safe
+
+- if @info.sections
+  %div.description
+    - @info.sections.each do |section,desc|
+      .section
+        %h3= section.titleize
+        = desc.html_safe
