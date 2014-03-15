@@ -14,8 +14,3 @@
 /log/*.log
 /log/*.lck
 /tmp
-Gemfile.lock
-
-# Ignore solr bundle
-/solr/**/*
-!/solr/**/schema.xml
