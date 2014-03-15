@@ -33,7 +33,6 @@ SimpleNavigation::Configuration.run do |navigation|
   # Define the primary navigation
   navigation.items do |primary|
     primary.item :root, 'Home', root_path
-    primary.item :servers, 'Servers', servers_path
     primary.item :updates, 'Search', url_for(:controller => 'search', :action => 'index')
 
     # you can also specify a css id or class to attach to this particular level
