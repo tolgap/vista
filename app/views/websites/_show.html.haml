@@ -30,7 +30,7 @@
         %th
     %tbody
       - @website.plugins.each do |plugin|
-        %tr{class: "plugin #{plugin.status}"}
+        %tr{class: "plugin status-#{plugin.status}"}
           %td= link_to plugin.name, [@website.server, @website, plugin]
           %td= row_class_version(plugin)
           %td= plugin.has_update?
@@ -45,6 +45,7 @@
         %th
         %th
         %th
+  = render "plugins/legend"
 
 :javascript
   jQuery(document).ready(function() {

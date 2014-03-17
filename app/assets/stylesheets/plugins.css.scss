@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.plugin, .plugin:hover {
-  &.inactive td, &.inactive td:hover {
+.plugin {
+  &.status-inactive {
     background-color: #000 !important;
     opacity: 0.4;
 
@@ -17,7 +17,7 @@
     }
   }
 
-  &.active td, &.active td:hover {
+  &.status-active {
     background-color: #fff !important;
     color: #000 !important;
   }
