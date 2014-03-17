@@ -17,9 +17,8 @@
         %th
         %th
 
-  :javascript
-    jQuery(document).ready(function() {
-      window.DataTable.Search();
-    });
+  .kaminari.pull-right
+    = paginate @results, :params => {:controller => 'search', :action => 'search'}, remote: true,
+      theme: 'twitter-bootstrap'
 - else
   = "No results found"

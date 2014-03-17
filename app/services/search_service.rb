@@ -10,7 +10,7 @@ class SearchService
 
     klass = @params[:type].classify.constantize
     s = klass.__elasticsearch__.search query_string
-    s.results
+    s.page(@params[:page]).results
   end
 
   def query_string

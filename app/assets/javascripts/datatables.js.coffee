@@ -23,10 +23,3 @@ do ($ = jQuery, scope = window) ->
         { "bSortable": true},
         { "bSortable": true},
         { "bSortable": true}]
-
-  scope.DataTable.Search = ->
-    $('.search.datatable').dataTable
-      sDom: 'tip'
-      aoColumns: [{ "bSortable": true},
-        { "bSortable": true},
-        { "bSortable": true}]

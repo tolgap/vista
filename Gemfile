@@ -11,6 +11,7 @@ gem 'haml'
 gem 'haml-rails', :group => :development
 gem "factory_girl_rails", "~> 4.0", :group => [:development, :test]
 gem 'faker', :group => [:development, :test]
+gem 'kaminari'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
