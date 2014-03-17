@@ -1,5 +1,6 @@
 class ServersController < ApplicationController
   before_filter :check_wp_version
+  add_breadcrumb "Home", :root_path
 
   # GET /servers
   # GET /servers.json
@@ -16,6 +17,7 @@ class ServersController < ApplicationController
   # GET /servers/1.json
   def show
     @server = Server.find(params[:id])
+    add_breadcrumb @server.name, [@server]
 
     respond_to do |format|
       format.html # show.html.erb

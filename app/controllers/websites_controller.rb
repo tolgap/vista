@@ -1,5 +1,6 @@
 class WebsitesController < ApplicationController
   before_filter :load_server
+  add_breadcrumb "Home", :root_path
 
   # GET /websites
   # GET /websites.json
@@ -16,6 +17,8 @@ class WebsitesController < ApplicationController
   # GET /websites/1.json
   def show
     @website = Website.find(params[:id])
+    add_breadcrumb @server.name, [@server]
+    add_breadcrumb @website.name, [@server, @website]
 
     respond_to do |format|
       format.html # show.html.haml

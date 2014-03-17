@@ -1,5 +1,6 @@
 class PluginsController < ApplicationController
   before_filter :load_server, :load_website
+  add_breadcrumb "Home", :root_path
 
   # GET /plugins
   # GET /plugins.json
@@ -16,6 +17,9 @@ class PluginsController < ApplicationController
   # GET /plugins/1.json
   def show
     @plugin = Plugin.find(params[:id])
+    add_breadcrumb @server.name, [@server]
+    add_breadcrumb @website.name, [@server, @website]
+    add_breadcrumb @plugin.name, [@server, @website, @plugin]
 
     respond_to do |format|
       format.html # show.html.erb
