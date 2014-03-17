@@ -17,7 +17,7 @@ class Plugin < ActiveRecord::Base
   def wp_info
     require 'php_serialize'
 
-    uri = URI.parse("http://api.wordpress.org/plugins/info/1.0/" + self.name)
+    uri = URI.parse("http://api.wordpress.org/plugins/info/1.0/" + URI.encode(self.name))
     res = Net::HTTP.get(uri)
 
     result = PHP.unserialize(res)
