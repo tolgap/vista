@@ -1,6 +1,7 @@
 class Server < ActiveRecord::Base
   attr_accessible :name, :websites_attributes
   has_many :websites
+  has_many :plugins, through: :websites
 
   accepts_nested_attributes_for :websites
 
