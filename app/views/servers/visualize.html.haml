@@ -1,0 +1,29 @@
+.intro.page-header
+  %h1
+    = @server.name
+    %small server's visualization
+  %p
+    Visualizing the website and plugin information for
+    %em= @server.name
+    server.
+
+.row.visualizations
+  .server.span6{ data: { "has-update" => @data[:server_data][:has_update],
+    "up-to-date" => @data[:server_data][:up_to_date],
+    "total" => @data[:server_data][:total] } }
+    %p
+      %strong Website updates
+
+    :javascript
+      jQuery(document).ready(function() {
+        window.Visualization.Server();
+      });
+
+  .website.span6{ data: { "versions" => @data[:website_data][:versions] } }
+    %p
+      %strong Website versions
+
+    :javascript
+      jQuery(document).ready(function () {
+        window.Visualization.Website();
+      });

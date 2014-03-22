@@ -22,3 +22,4 @@
 //= require search
 //= require websites
 //= require plugins
+//= require visualization
