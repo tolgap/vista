@@ -21,7 +21,7 @@ class VisualizationService
   end
 
   def website_data
-    versions = @server.websites.pluck(:version).sort
+    versions = @server.websites.pluck(:version).compact.sort
 
     { versions: versions.group_by{|x| x}.values }
   end
