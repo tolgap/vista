@@ -46,10 +46,10 @@ do ($ = jQuery, scope = window) ->
 
   scope.Visualization.Website = ->
     margin = {top: 20, right: 20, bottom: 30, left: 40}
-    width = 640 - margin.left - margin.right
-    height = 360 - margin.top - margin.bottom
+    width = 1140 - margin.left - margin.right
+    height = 600 - margin.top - margin.bottom
 
-    container = $('.visualizations .website')
+    container = $('.visualizations .websites')
     versions = container.data("versions")
 
     console.log versions
@@ -69,7 +69,7 @@ do ($ = jQuery, scope = window) ->
       .orient("left")
       .ticks(10)
 
-    svg = d3.select(".visualizations .website")
+    svg = d3.select(".visualizations .websites")
       .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -94,7 +94,7 @@ do ($ = jQuery, scope = window) ->
       .append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", -30)
-        .attr("dy", ".05em")
+        .attr("dy", "0em")
         .style("text-anchor", "end")
         .text("Websites")
 
