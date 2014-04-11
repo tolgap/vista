@@ -21,7 +21,7 @@
         %th Actions
     %tbody
       - @server.websites.each do |website|
-        %tr{:class => "website" + row_classes_for(website)}
+        %tr{:class => "website " + row_classes_for(website)}
           %td= link_to website.name, [@server, website]
           %td= row_class_version(website) unless website.has_errors?
           %td= website.plugins.count
