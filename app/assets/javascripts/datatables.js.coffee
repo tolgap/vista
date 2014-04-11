@@ -15,11 +15,13 @@ do ($ = jQuery, scope = window) ->
       aoColumns: [{ "bSortable": true},
         { "bSortable": true},
         { "bSortable": true},
-        { "bSortable": true}]
+        { "bSortable": true},
+        { "bSortable": false}]
 
   scope.DataTable.Plugin = ->
     $('.plugins.datatable').dataTable
       aoColumns: [{ "bSortable": true},
         { "bSortable": true},
         { "bSortable": true},
-        { "bSortable": true}]
+        { "bSortable": true},
+        { "bSortable": false}]
