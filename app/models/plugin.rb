@@ -4,6 +4,7 @@ class Plugin < ActiveRecord::Base
 
   attr_accessible :name, :status, :has_update, :version
   belongs_to :website
+  has_one    :server, through: :website
 
   index_name "#{Rails.application.class.parent_name.downcase}_#{Rails.env}_plugins"
 
