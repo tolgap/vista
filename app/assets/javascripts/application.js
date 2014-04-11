@@ -17,7 +17,9 @@
 //= require dataTables/jquery.dataTables
 //= require datatables-bootstrap
 //= require jquery.dataTables.columnFilter
+//= require d3
 //= require datatables
 //= require search
 //= require websites
 //= require plugins
+//= require visualization

@@ -8,6 +8,12 @@
     server with all their core and plugin information.
   %p Click on the website name to expand it's plugin information
 
+.visualize
+  %p
+    To visualize the server data,
+    = link_to "click here", [:visualize, @server]
+    using graphs.
+
 = render 'websites/modal'
 
 - unless @server.websites.blank?

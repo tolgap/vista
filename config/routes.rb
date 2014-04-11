@@ -1,6 +1,10 @@
 Overview::Application.routes.draw do
 
   resources :servers do
+    member do
+      get 'visualize'
+    end
+
     resources :websites do
       collection do
         post 'create_or_update'

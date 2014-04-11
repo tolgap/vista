@@ -14,6 +14,7 @@ gem 'faker', :group => [:development, :test]
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem "breadcrumbs_on_rails"
+gem 'd3-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

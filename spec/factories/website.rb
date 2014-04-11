@@ -6,6 +6,7 @@ FactoryGirl.define do
     blog_name { name.titleize }
     has_errors false
     has_update { [true, false].sample }
+    server nil
 
     factory :website_with_plugins do
 

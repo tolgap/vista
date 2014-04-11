@@ -25,6 +25,22 @@ class ServersController < ApplicationController
     end
   end
 
+  # GET /servers/1/visualize
+  # GET /servers/1/visualize.json
+  def visualize
+    @server = Server.find(params[:id])
+    add_breadcrumb @server.name, [@server]
+    add_breadcrumb "visualizing", [:visualize, @server]
+
+    service = VisualizationService.new(@server)
+    @data = service.gather
+
+    respond_to do |format|
+      format.html
+      format.json { render json: { server: @server, data: @data } }
+    end
+  end
+
   # GET /servers/new
   # GET /servers/new.json
   def new
