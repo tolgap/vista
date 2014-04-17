@@ -121,12 +121,14 @@ class WebsitesController < ApplicationController
 private
 
   def process_plugins
-    params[:website][:plugins].each do |p_param|
-      plugin = @website.plugins.find_or_create_by_name(p_param[:name])
-      p_param.each do |attribute, value|
-        plugin.send("#{attribute.to_s}=", value)
+    unless params[:website][:plugins].blank?
+      params[:website][:plugins].each do |p_param|
+        plugin = @website.plugins.find_or_create_by_name(p_param[:name])
+        p_param.each do |attribute, value|
+          plugin.send("#{attribute.to_s}=", value)
+        end
+        plugin.save
       end
-      plugin.save
     end
   end
 end

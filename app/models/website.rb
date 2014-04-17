@@ -3,7 +3,7 @@ class Website < ActiveRecord::Base
   include Elasticsearch::Model::Callbacks
 
   attr_accessible :name, :version, :has_update, :blog_name,
-    :has_errors, :website_errors, :plugin
+    :has_errors, :website_errors, :plugin, :cms_type
 
   index_name "#{Rails.application.class.parent_name.downcase}_#{Rails.env}_websites"
 
@@ -12,6 +12,7 @@ class Website < ActiveRecord::Base
     indexes :version, analyzer: 'snowball'
     indexes :has_update, type: :boolean
     indexes :has_error, type: :boolean
+    indexes :cms_type, type: :string
   end
 
   serialize :website_errors
