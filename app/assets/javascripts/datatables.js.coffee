@@ -11,17 +11,33 @@ do ($ = jQuery, scope = window) ->
     scope.DataTable = {}
 
   scope.DataTable.Website = ->
-    $('.websites.datatable').dataTable
+    $('.websites.datatable').dataTable(
       aoColumns: [{ "bSortable": true},
+        { "bSortable": false},
         { "bSortable": true},
         { "bSortable": true},
         { "bSortable": true},
         { "bSortable": false}]
+    ).columnFilter(
+      aoColumns: [null,
+        { "type": "select"},
+        null,
+        null,
+        null,
+        null,]
+    )
 
   scope.DataTable.Plugin = ->
-    $('.plugins.datatable').dataTable
+    $('.plugins.datatable').dataTable(
       aoColumns: [{ "bSortable": true},
         { "bSortable": true},
         { "bSortable": true},
         { "bSortable": true},
         { "bSortable": false}]
+    ).columnFilter(
+      aoColumns: [null,
+        null,
+        { "type": "select"},
+        { "type": "select"},
+        null,]
+    )

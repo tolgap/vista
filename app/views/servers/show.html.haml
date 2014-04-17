@@ -21,6 +21,7 @@
     %thead
       %tr
         %th Name
+        %th CMS
         %th Version
         %th Num. plugins
         %th Updated
@@ -29,12 +30,14 @@
       - @server.websites.each do |website|
         %tr{:class => "website " + row_classes_for(website)}
           %td= link_to website.name, [@server, website]
+          %td= website.cms_type.capitalize
           %td= row_class_version(website) unless website.has_errors?
           %td= website.plugins.count
           %td= time_ago_in_words(website.updated_at) + " ago"
           %td= link_to "show", [@server, website], remote: true, data: { toggle: "modal", target: "#website-modal" }
     %tfoot
       %tr
+        %th
         %th
         %th
         %th
