@@ -37,7 +37,7 @@
           %td= website.plugins.count
           %td= time_ago_in_words(website.updated_at) + " ago"
           %td= [link_to("show", [@server, website], remote: true, data: { toggle: "modal", target: "#website-modal" }),
-            link_to("comments", [:comments, @server, website], remote: true, data: { toggle: "modal", target: "#website-modal" })].join(' | ').html_safe
+            link_to("meta", [:meta, @server, website], remote: true, data: { toggle: "modal", target: "#website-modal" })].join(' | ').html_safe
     %tfoot
       %tr
         %th

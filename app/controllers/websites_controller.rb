@@ -27,13 +27,13 @@ class WebsitesController < ApplicationController
     end
   end
 
-  # GET /websites/1/comments
-  # GET /websites/1/comments.json
-  def comments
+  # GET /websites/1/meta
+  # GET /websites/1/meta.json
+  def meta
     @website = Website.find(params[:id])
     add_breadcrumb @server.name, [@server]
     add_breadcrumb @website.name, [@server, @website]
-    add_breadcrumb "comments", [:comments, @server, @website]
+    add_breadcrumb "meta", [:meta, @server, @website]
 
     respond_to do |format|
       format.html

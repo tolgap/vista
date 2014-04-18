@@ -10,7 +10,7 @@ Overview::Application.routes.draw do
         post 'create_or_update'
       end
       member do
-        get 'comments'
+        get 'meta'
       end
 
       resources :plugins do
