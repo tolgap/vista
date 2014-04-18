@@ -26,5 +26,12 @@ p {
 }
 
 .modal {
-  width: 760px;
+  width: 960px;
+  left: 40%;
+}
+
+form {
+  textarea {
+    width: auto;
+  }
 }

@@ -27,6 +27,21 @@ class WebsitesController < ApplicationController
     end
   end
 
+  # GET /websites/1/comments
+  # GET /websites/1/comments.json
+  def comments
+    @website = Website.find(params[:id])
+    add_breadcrumb @server.name, [@server]
+    add_breadcrumb @website.name, [@server, @website]
+    add_breadcrumb "comments", [:comments, @server, @website]
+
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render json: @website }
+    end
+  end
+
   # GET /websites/new
   # GET /websites/new.json
   def new
@@ -91,13 +106,11 @@ class WebsitesController < ApplicationController
   # PUT /websites/1
   # PUT /websites/1.json
   def update
-    @website = Website.find_by_name(params[:website][:name])
+    @website = Website.find(params[:id])
 
     respond_to do |format|
-      if @website.update_attributes!(params[:website])
-        process_plugins
-
-        format.html { redirect_to [@server, @website], notice: 'Website was successfully updated.' }
+      if @website.update_attributes(params[:website])
+        format.html { redirect_to [@server], notice: 'Website was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

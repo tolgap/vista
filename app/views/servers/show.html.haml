@@ -17,7 +17,7 @@
 = render 'websites/modal'
 
 - unless @server.websites.blank?
-  %table.table.websites.table-striped.datatable
+  %table.table.websites.datatable
     %thead
       %tr
         %th Name
@@ -34,7 +34,8 @@
           %td= row_class_version(website) unless website.has_errors?
           %td= website.plugins.count
           %td= time_ago_in_words(website.updated_at) + " ago"
-          %td= link_to "show", [@server, website], remote: true, data: { toggle: "modal", target: "#website-modal" }
+          %td= [link_to("show", [@server, website], remote: true, data: { toggle: "modal", target: "#website-modal" }),
+            link_to("comments", [:comments, @server, website], remote: true, data: { toggle: "modal", target: "#website-modal" })].join(' | ').html_safe
     %tfoot
       %tr
         %th

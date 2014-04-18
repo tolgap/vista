@@ -9,6 +9,9 @@ Overview::Application.routes.draw do
       collection do
         post 'create_or_update'
       end
+      member do
+        get 'comments'
+      end
 
       resources :plugins do
         member do

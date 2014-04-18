@@ -1,0 +1,21 @@
+%h2
+  Comments
+
+.comments
+  = form_for([@server, @website]) do |f|
+    - if @website.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@website.errors.count, "error")
+          prohibited this website from being saved:
+
+        %ul
+        - @website.errors.full_messages.each do |msg|
+          %li= msg
+
+    .field
+      - placeholder = nil
+      - placeholder = "No comments" if @website.comments.blank?
+      = f.text_area :comments, cols: 60, rows: 5, placeholder: placeholder
+    .actions
+      = f.submit "Submit comment", data: { disable_with: 'Updated' }
