@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140417092042) do
+ActiveRecord::Schema.define(:version => 20140418073120) do
 
   create_table "plugins", :force => true do |t|
     t.string   "name"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20140417092042) do
     t.boolean  "has_errors",     :default => false
     t.text     "website_errors"
     t.string   "cms_type",       :default => "wordpress"
+    t.text     "comments"
   end
 
 end
