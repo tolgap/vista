@@ -3,7 +3,8 @@ class Website < ActiveRecord::Base
   include Elasticsearch::Model::Callbacks
 
   attr_accessible :name, :version, :has_update, :blog_name,
-    :has_errors, :website_errors, :plugin, :cms_type, :comments
+    :has_errors, :website_errors, :plugin, :cms_type, :comments,
+    :has_maintenance
 
   index_name "#{Rails.application.class.parent_name.downcase}_#{Rails.env}_websites"
 

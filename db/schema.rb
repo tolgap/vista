@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140418073120) do
+ActiveRecord::Schema.define(:version => 20140418101738) do
 
   create_table "plugins", :force => true do |t|
     t.string   "name"
@@ -32,15 +32,16 @@ ActiveRecord::Schema.define(:version => 20140418073120) do
   create_table "websites", :force => true do |t|
     t.string   "name"
     t.string   "version"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.integer  "server_id"
     t.string   "blog_name"
     t.boolean  "has_update"
-    t.boolean  "has_errors",     :default => false
+    t.boolean  "has_errors",      :default => false
     t.text     "website_errors"
-    t.string   "cms_type",       :default => "wordpress"
+    t.string   "cms_type",        :default => "wordpress"
     t.text     "comments"
+    t.boolean  "has_maintenance", :default => true
   end
 
 end

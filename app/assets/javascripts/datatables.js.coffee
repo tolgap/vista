@@ -17,9 +17,11 @@ do ($ = jQuery, scope = window) ->
         { "bSortable": true},
         { "bSortable": true},
         { "bSortable": true},
+        { "bSortable": true},
         { "bSortable": false}]
     ).columnFilter(
       aoColumns: [null,
+        { "type": "select"},
         { "type": "select"},
         null,
         null,
