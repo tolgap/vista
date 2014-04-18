@@ -19,5 +19,9 @@
       - placeholder = nil
       - placeholder = "No comments" if @website.comments.blank?
       = f.text_area :comments, cols: 60, rows: 5, placeholder: placeholder
+    .field
+      = f.label :has_maintenance
+      = f.check_box :has_maintenance
+    %br/
     .actions
       = f.submit "Submit", data: { disable_with: 'Updated' }
