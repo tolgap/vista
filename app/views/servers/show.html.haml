@@ -31,7 +31,7 @@
         %tr{:class => "website " + row_classes_for(website)}
           %td= link_to website.name, [@server, website]
           %td= website.cms_type.capitalize
-          %td= row_class_version(website) unless website.has_errors?
+          %td= row_class_version(website) unless website.version.blank?
           %td= website.plugins.count
           %td= time_ago_in_words(website.updated_at) + " ago"
           %td= [link_to("show", [@server, website], remote: true, data: { toggle: "modal", target: "#website-modal" }),
