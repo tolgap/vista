@@ -1,5 +1,4 @@
 class ServersController < ApplicationController
-  before_filter :check_wp_version
   add_breadcrumb "Home", :root_path
 
   # GET /servers
