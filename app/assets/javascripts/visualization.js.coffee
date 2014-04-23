@@ -33,7 +33,10 @@ do ($ = jQuery, scope = window) ->
 
       arcs.append("svg:path")
         .attr("fill", (d, i) ->
-          return color(i)
+          if data[i].label == "Update available"
+            return "#d62728"
+          else
+            return "#a5df5b"
         ).attr("d", arc)
 
       arcs.append("svg:text")
@@ -67,7 +70,7 @@ do ($ = jQuery, scope = window) ->
       yAxis = d3.svg.axis()
         .scale(y)
         .orient("left")
-        .ticks(10)
+        .ticks(versions.length)
 
       svg = d3.select(this)
         .append("svg")
