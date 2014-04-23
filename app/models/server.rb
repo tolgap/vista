@@ -1,5 +1,5 @@
 class Server < ActiveRecord::Base
-  attr_accessible :name, :websites_attributes
+  attr_accessible :name, :has_mail, :websites_attributes
   has_many :websites
   has_many :plugins, through: :websites
 

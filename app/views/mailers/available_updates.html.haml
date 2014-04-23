@@ -1,0 +1,21 @@
+%h1
+  Available updates for
+  = @type
+
+%div
+  %p
+    The following websites have been flagged as updatable.
+    Please refer to the website to view the details.
+
+%table{:style => 'max-width: 50%;background-color: transparent;border-collapse: collapse;border-spacing: 0;width: 50%;margin-bottom: 20px;clear: both;margin-bottom: 6px !important;max-width: none !important;'}
+  %thead
+    %tr{:style => 'background-color: #f9f9f9;'}
+      %th{:style => 'padding: 8px;line-height: 20px;text-align: left;vertical-align: top;border-top: 1px solid #dddddd;font-weight: bold;'} Website
+      %th{:style => 'padding: 8px;line-height: 20px;text-align: left;vertical-align: top;border-top: 1px solid #dddddd;font-weight: bold;'} Server
+      %th{:style => 'padding: 8px;line-height: 20px;text-align: left;vertical-align: top;border-top: 1px solid #dddddd;font-weight: bold;'} Current version
+  %tbody
+    - @data.each do |website|
+      %tr
+        %td{:style => 'padding: 8px;line-height: 20px;text-align: left;vertical-align: top;border-top: 1px solid #dddddd;'}= website.blog_name
+        %td{:style => 'padding: 8px;line-height: 20px;text-align: left;vertical-align: top;border-top: 1px solid #dddddd;'}= website.server.name
+        %td{:style => 'padding: 8px;line-height: 20px;text-align: left;vertical-align: top;border-top: 1px solid #dddddd;'}= website.version

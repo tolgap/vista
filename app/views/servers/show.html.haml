@@ -8,11 +8,29 @@
     server with all their core and plugin information.
   %p Click on the website name to expand it's plugin information
 
+
+.pull-right
+  = form_for([@server], remote: true, html: { class: 'form-server-set-mail pull-right' } ) do |f|
+    = f.label :has_mail
+    = f.check_box :has_mail
+  .message-checked.hidden
+    %p
+      Server will sent update info
+  .message-unchecked.hidden
+    %p
+      Server will NOT sent update info
+  :javascript
+    jQuery(document).ready(function() {
+      window.Server.SetMail();
+    });
+
 .visualize
   %p
     To visualize the server data,
     = link_to "click here", [:visualize, @server]
     using graphs.
+
+.clearfix
 
 = render 'websites/modal'
 

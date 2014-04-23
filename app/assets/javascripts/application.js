@@ -20,6 +20,7 @@
 //= require d3
 //= require datatables
 //= require search
+//= require servers
 //= require websites
 //= require plugins
 //= require visualization
