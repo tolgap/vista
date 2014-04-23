@@ -17,14 +17,14 @@
 .field
   %p
     %span.name Has update:
-    = @website.has_update?
+    = humanize_boolean(@website.has_update?)
 
 = render "plugins/description_modal"
 
 %h2 Plugins:
 
 - unless @website.plugins.blank? && @website.has_errors?
-  %table.table.plugins.table-striped.datatable
+  %table.table.plugins.datatable
     %thead
       %tr
         %th Name
@@ -37,7 +37,7 @@
         %tr{class: "plugin status-#{plugin.status}"}
           %td= link_to plugin.name, [@website.server, @website, plugin]
           %td= row_class_version(plugin)
-          %td= plugin.has_update?
+          %td= humanize_boolean(plugin.has_update?)
           %td= plugin.status.titleize
           %td= link_to("info",
             [:description, @server, @website, plugin],
