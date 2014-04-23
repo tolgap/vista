@@ -1,2 +1,4 @@
-default_mail_from: ~
-default_mail_to: ~
+# Override these in your settings.local.yml file
+
+# default_mail_from: ~
+# default_mail_to: ~
