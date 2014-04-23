@@ -15,6 +15,7 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem "breadcrumbs_on_rails"
 gem 'd3-rails'
+gem 'rails_config'
 
 # Gems used only for assets and not required
 # in production environments by default.
