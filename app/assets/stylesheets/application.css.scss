@@ -28,6 +28,10 @@ p {
 .modal {
   width: 960px;
   left: 40%;
+
+  .modal-body {
+    max-height: 600px;
+  }
 }
 
 form {
