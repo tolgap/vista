@@ -20,13 +20,14 @@
   %table.table.websites.datatable
     %thead
       %tr
-        %th Name
-        %th CMS
+        %th{width: '300px'} Name
+        %th{width: '150px'} CMS
         %th{width: '100px'} Maintenance Contract
-        %th Version
-        %th Num. plugins
-        %th Updated
-        %th Actions
+        %th{width: '110px'} Version
+        %th{width: '120px'} Num. plugins
+        %th{width: '250px'} Updated
+        %th{width: '250px'} Summary
+        %th{width: '200px'} Actions
     %tbody
       - @server.websites.each do |website|
         %tr{:class => "website " + row_classes_for(website)}
@@ -36,6 +37,7 @@
           %td= row_class_version(website) unless website.has_errors?
           %td= website.plugins.size
           %td= time_ago_in_words(website.updated_at) + " ago"
+          %td.small= truncate(website.comments, length: 50, escape: false)
           %td= [link_to("show", [@server, website], remote: true, data: { toggle: "modal", target: "#website-modal" }),
             link_to("meta", [:meta, @server, website], remote: true, data: { toggle: "modal", target: "#website-modal" })].join(' | ').html_safe
     %tfoot

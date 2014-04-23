@@ -8,11 +8,12 @@
     server.
 
 .row.visualizations
-  .server.span6{ data: { "has-update" => @wordpress_data[:server_data][:has_update],
-    "up-to-date" => @wordpress_data[:server_data][:up_to_date],
-    "total" => @wordpress_data[:server_data][:total] } }
-    %p
-      %strong Wordpress website updates
+  - unless @wordpress_data.blank? || @wordpress_data[:server_data][:total].blank?
+    .server.span6{ data: { "has-update" => @wordpress_data[:server_data][:has_update],
+      "up-to-date" => @wordpress_data[:server_data][:up_to_date],
+      "total" => @wordpress_data[:server_data][:total] } }
+      %p
+        %strong Wordpress website updates
 
   .server.span6{ data: { "has-update" => @drupal_data[:server_data][:has_update],
     "up-to-date" => @drupal_data[:server_data][:up_to_date],
