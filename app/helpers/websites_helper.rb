@@ -27,9 +27,18 @@ module WebsitesHelper
     classes.join(' ')
   end
 
-  def row_class_version(versionable)
-    span_type = versionable.has_update? ? "warning" : "info"
-    content_tag(:span, versionable.version, class: "badge badge-#{span_type}")
+  def plugins_row_class_version(plugin)
+    span_type = plugin.has_update? ? "warning" : "info"
+    row_badge(plugin.version, span_type)
+  end
+
+  def websites_row_class_version(website)
+    span_type = website.has_update_by_type? ? "warning" : "info"
+    row_badge(website.version, span_type)
+  end
+
+  def row_badge(content, type)
+    content_tag(:span, content, class: "badge badge-#{type}")
   end
 
 end

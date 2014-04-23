@@ -34,7 +34,7 @@
           %td= link_to website.name, [@server, website]
           %td= website.cms_type.capitalize
           %td= humanize_boolean(website.has_maintenance?)
-          %td= row_class_version(website) unless website.has_errors?
+          %td= websites_row_class_version(website) unless website.has_errors?
           %td= website.plugins.size
           %td= time_ago_in_words(website.updated_at) + " ago"
           %td.small= truncate(website.comments, length: 50, escape: false)

@@ -25,6 +25,15 @@ class Website < ActiveRecord::Base
     update_info.include?(true)
   end
 
+  def has_update_by_type?
+    if cms_type == 'drupal'
+      core = plugins.find_by_name('drupal')
+      core.blank? ? true : core.has_update?
+    else
+      has_update?
+    end
+  end
+
   # Class methods
   class << self
 
