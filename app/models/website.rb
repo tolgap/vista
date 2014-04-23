@@ -16,8 +16,6 @@ class Website < ActiveRecord::Base
     indexes :cms_type, type: :string
   end
 
-  serialize :website_errors
-
   belongs_to :server
   has_many :plugins
 

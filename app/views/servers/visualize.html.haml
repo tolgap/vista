@@ -8,22 +8,29 @@
     server.
 
 .row.visualizations
-  .server.span6{ data: { "has-update" => @data[:server_data][:has_update],
-    "up-to-date" => @data[:server_data][:up_to_date],
-    "total" => @data[:server_data][:total] } }
+  .server.span6{ data: { "has-update" => @wordpress_data[:server_data][:has_update],
+    "up-to-date" => @wordpress_data[:server_data][:up_to_date],
+    "total" => @wordpress_data[:server_data][:total] } }
     %p
-      %strong Website updates
+      %strong Wordpress website updates
 
-    :javascript
-      jQuery(document).ready(function() {
-        window.Visualization.Server();
-      });
+  .server.span6{ data: { "has-update" => @drupal_data[:server_data][:has_update],
+    "up-to-date" => @drupal_data[:server_data][:up_to_date],
+    "total" => @drupal_data[:server_data][:total] } }
+    %p
+      %strong Drupal website updates
+%br/
+.clearfix
 .row.visualizations
-  .websites.span12{ data: { "versions" => @data[:website_data][:versions] } }
+  .websites.span6{ data: { "versions" => @wordpress_data[:website_data][:versions] } }
     %p
-      %strong Website versions
+      %strong Wordpress website versions
+  .websites.span6{ data: { "versions" => @drupal_data[:website_data][:versions] } }
+    %p
+      %strong Drupal website versions
 
-    :javascript
-      jQuery(document).ready(function () {
-        window.Visualization.Website();
-      });
+  :javascript
+    jQuery(document).ready(function () {
+      window.Visualization.Server();
+      window.Visualization.Website();
+    });

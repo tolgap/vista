@@ -32,12 +32,15 @@ class ServersController < ApplicationController
     add_breadcrumb @server.name, [@server]
     add_breadcrumb "visualizing", [:visualize, @server]
 
-    service = VisualizationService.new(@server)
-    @data = service.gather
+    wp_service = VisualizationService.new(@server, :wordpress)
+    dp_service = VisualizationService.new(@server, :drupal)
+    @wordpress_data = wp_service.gather
+    @drupal_data    = dp_service.gather
 
     respond_to do |format|
       format.html
-      format.json { render json: { server: @server, data: @data } }
+      format.json { render json: { server: @server,
+        wp_data: @wordpress_data, dp_data: @drupal_data} }
     end
   end
 
