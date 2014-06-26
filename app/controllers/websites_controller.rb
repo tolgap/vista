@@ -76,7 +76,7 @@ class WebsitesController < ApplicationController
         process_plugins
 
         format.html { redirect_to [@server, Website], notice: 'Website was successfully created.' }
-        format.json { head :no_Content, status: :created }
+        format.json { head :no_content, status: :created }
       else
         format.html { render action: "new" }
         format.json { render json: @website.errors, status: :unprocessable_entity }
@@ -95,7 +95,7 @@ class WebsitesController < ApplicationController
         process_plugins
 
         format.html { redirect_to [@server, Website], notice: 'Website was successfully created.' }
-        format.json { head :no_Content, status: :created }
+        format.json { head :no_content, status: :created }
       else
         format.html { render action: "new" }
         format.json { render json: @website.errors, status: :unprocessable_entity }
