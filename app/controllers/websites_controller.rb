@@ -137,10 +137,8 @@ private
     unless params[:website][:plugins].blank?
       params[:website][:plugins].each do |p_param|
         plugin = @website.plugins.find_or_create_by_name(p_param[:name])
-        p_param.each do |attribute, value|
-          plugin.send("#{attribute.to_s}=", value)
-        end
-        plugin.save
+        plugin.update_attributes(p_param)
+        plugin.save!
       end
     end
   end
