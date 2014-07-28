@@ -19,6 +19,8 @@ class Website < ActiveRecord::Base
   belongs_to :server
   has_many :plugins
 
+  serialize :website_errors
+
   # Instance methods
   def has_plugin_update
     update_info = plugins.map { |p| p.status == "active" && p.has_update? }
@@ -32,6 +34,10 @@ class Website < ActiveRecord::Base
     else
       has_update?
     end
+  end
+
+  def clean_errors
+    website_errors.reject(&:blank?)
   end
 
   # Class methods

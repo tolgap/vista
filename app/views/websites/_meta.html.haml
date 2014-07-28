@@ -4,15 +4,6 @@
 
 .comments
   = form_for([@server, @website]) do |f|
-    - if @website.errors.any?
-      #error_explanation
-        %h2
-          = pluralize(@website.errors.count, "error")
-          prohibited this website from being saved:
-
-        %ul
-        - @website.errors.full_messages.each do |msg|
-          %li= msg
 
     .field
       = f.label :comments
@@ -25,3 +16,16 @@
     %br/
     .actions
       = f.submit "Submit", data: { disable_with: 'Updated' }
+
+
+    - if @website.has_errors?
+      %br/
+      %hr/
+      #error_explanation
+        %h4
+          This website contains
+          = pluralize(@website.clean_errors.count, "error")
+
+        %ul
+        - @website.clean_errors.each do |msg|
+          %li= msg
