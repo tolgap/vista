@@ -15,10 +15,9 @@ do ($ = jQuery, scope = window) ->
 
   unless window.DataTable
     scope.DataTable = {}
-    listen_for_deletes
 
   scope.DataTable.Website = ->
-    $('.websites.datatable').dataTable(
+    table = $('.websites.datatable').dataTable(
       aoColumns: [{ "bSortable": true},
         { "bSortable": false},
         { "bSortable": true},
@@ -52,12 +51,3 @@ do ($ = jQuery, scope = window) ->
         { "type": "select"},
         null,]
     )
-
-  listen_for_deletes = ->
-    table = $('.datatable').DataTable()
-
-    $('.datatable tbody tr').on 'click', 'a.delete', ->
-      table
-        .row($(this).parents('tr'))
-        .remove
-        .draw

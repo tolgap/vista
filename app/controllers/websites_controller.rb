@@ -125,8 +125,10 @@ class WebsitesController < ApplicationController
     @website = Website.find(params[:id])
     @website.destroy
 
+    flash.now[:info] = "Website #{@website.name} deleted"
+
     respond_to do |format|
-      format.html { redirect_to server_path(@server) }
+      format.html { redirect_to server_path(@server), status: 303 }
       format.json { head :no_content }
     end
   end

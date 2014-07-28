@@ -61,7 +61,7 @@
           %td.small= truncate(website.comments, length: 50, escape: false)
           %td= [link_to("show", [@server, website], remote: true, data: { toggle: "modal", target: "#website-modal" }),
             link_to("meta", [:meta, @server, website], remote: true, data: { toggle: "modal", target: "#website-modal" }),
-            link_to("delete", [@server, website], method: :delete, remote: true, class: "delete")].join(' | ').html_safe
+            link_to("delete", [@server, website], method: :delete, class: "delete")].join(' | ').html_safe
     %tfoot
       %tr
         %th
