@@ -44,7 +44,9 @@ class Website < ActiveRecord::Base
   class << self
 
     def has_plugin(plugin)
-      Plugin.where('name = ? AND id != ?', plugin.name, plugin.id)
+      Plugin.where('plugins.name = ? AND plugins.id != ?', plugin.name, plugin.id)
+        .includes(:website)
+        .where('websites.has_errors = ?', false)
     end
 
     def check_latest_wp_version

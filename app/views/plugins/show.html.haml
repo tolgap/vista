@@ -37,8 +37,8 @@
           %li
             %strong
               = link_to match.website.blog_name, [@server, match.website]
-              - surround "(", ")" do
-                = match.version
+              = surround "(", ")" do
+                - match.version
 
   .wp-repo.span6
     = link_to("Get plugin info from Wordpress repository",
